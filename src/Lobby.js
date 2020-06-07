@@ -5,10 +5,6 @@ import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 
-function newGame() {
-
-}
-
 function Lobby() {
 
     let { code } = useParams();
@@ -33,8 +29,6 @@ function Lobby() {
                     }
                 ).then(
                     response => response.json()
-                ).catch(
-
                 ).then(
                     response => {
                         setPlayers(response.players)
@@ -46,8 +40,19 @@ function Lobby() {
         }, [code]
     )
 
-    const startGame = () => {
-
+    const startGame = async () => {
+        let x = await fetch(
+            "http://localhost:5000/game/" + code ,
+            {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                mode: 'cors'
+            }
+        );
+        setStarted(true)
     }
 
     if (gameStarted) {
@@ -58,7 +63,7 @@ function Lobby() {
         return <Redirect to={"/"}/>
     }
 
-    const playerList = () => {
+    const getPlayerList = () => {
         if (playersLoading) {
             return <Spinner animation="border" />
         } else {
@@ -72,10 +77,10 @@ function Lobby() {
         <>
             <h2>Lobby Code: <Badge variant="primary">{code}</Badge></h2>
             <h3>Players</h3>
-            {playerList()}
+            {getPlayerList()}
             <br/>
 
-            <Button variant="primary" size="lg" block>
+            <Button variant="primary" size="lg" onClick={() => startGame()} block>
                 Start Game
             </Button>
             <Button variant="secondary" size="sm" onClick={() => setPlayerQuit(true)} block>
