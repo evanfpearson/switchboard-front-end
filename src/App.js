@@ -1,25 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import SwitchboardRouter from "./Router";
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Navbar from 'react-bootstrap/Navbar'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+        <Navbar bg="light">
+          <Navbar.Brand href="#home">Switchboard</Navbar.Brand>
+        </Navbar>
+        <br/>
+        <Container fluid>
+          <Row>
+            <Col/>
+            <Col>
+              <SwitchboardRouter/>
+            </Col>
+            <Col/>
+          </Row>
+        </Container>
+      </>
   );
 }
 
