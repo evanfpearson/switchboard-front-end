@@ -11,10 +11,10 @@ function Game() {
     let { code } = useParams();
     let reactDice = useRef(null);
 
-    const [gameData, setGameData] = useState({});
     const [activePlayer, setActive] = useState(true);
     const [rollPhase, setRollPhase] = useState('roll');
     const [diceRoll, setDiceRoll] = useState([1,1]);
+    const [currentPlayer, setCurrentPlayer] = useState("");
 
     useEffect(
         () => {
@@ -33,8 +33,8 @@ function Game() {
                     response => response.json()
                 ).then(
                     response => {
-                        setGameData(response);
                         setDiceRoll(response['dice_roll']);
+                        setCurrentPlayer(response.players[response.player_to_move].name)
                     }
                 )
                 , 1000);
@@ -62,7 +62,7 @@ function Game() {
     return (
         <>
             <h2>Game Code: <Badge variant="primary">{code}</Badge></h2>
-            <h3>Players</h3>
+            <h3>Current player: {currentPlayer}</h3>
             <br/>
 
             {getRollButton()}
