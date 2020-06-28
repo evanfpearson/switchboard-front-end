@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import SwitchboardRouter from "./Router";
+import SwitchboardRouter from "../Router/Router";
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -10,7 +10,7 @@ function App() {
   return (
       <>
         <Navbar bg="light">
-          <Navbar.Brand href="#home">Switchboard</Navbar.Brand>
+          <Navbar.Brand href="/">Switchboard</Navbar.Brand>
         </Navbar>
         <br/>
         <Container fluid>

@@ -12,7 +12,7 @@ function Game() {
     let reactDice = useRef(null);
 
     const [activePlayer, setActive] = useState(true);
-    const [rollPhase, setRollPhase] = useState('roll');
+    const [movePhase, setMovePhase] = useState('roll');
     const [diceRoll, setDiceRoll] = useState([1,1]);
     const [currentPlayer, setCurrentPlayer] = useState("");
 
@@ -48,7 +48,7 @@ function Game() {
     }
 
     const getRollButton = () => {
-        if (activePlayer && rollPhase === 'roll') {
+        if (activePlayer && movePhase === 'roll') {
             return <Button onClick={() => rollDice()} block active>
                 Roll Dice
             </Button>

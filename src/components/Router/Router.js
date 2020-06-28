@@ -1,13 +1,13 @@
 import React from 'react';
-import './App.css';
+import '../App/App.css';
 import {
     BrowserRouter as Router,
     Switch,
     Route
 } from "react-router-dom";
-import Home from './Home'
-import Lobby from "./Lobby";
-import Game from "./Game"
+import Home from '../Home/Home'
+import Lobby from "../Lobby/Lobby";
+import Game from "../Game/Game"
 
 function SwitchboardRouter() {
     return (
